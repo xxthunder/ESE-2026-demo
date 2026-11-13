@@ -174,6 +174,22 @@ void RteSetBrightnessAdjustmentCounter(uint32_t counter);
 void RteGetBrightnessAdjustmentCounter(uint32_t *const counter);
 #endif // CONFIG_BRIGHTNESS_ADJUSTMENT_PERIOD
 
+#ifdef CONFIG_AUTO_OFF
+/**
+ * @brief Sets the auto-off state.
+ *
+ * @param autoOffState TRUE once the auto-off timer switched the light off, FALSE from the next user activity on.
+ */
+void RteSetAutoOffState(bool_t autoOffState);
+
+/**
+ * @brief Retrieves the auto-off state.
+ *
+ * @return TRUE if the auto-off timer switched the light off, FALSE otherwise.
+ */
+bool_t RteGetAutoOffState(void);
+#endif // CONFIG_AUTO_OFF
+
 /**
  * @brief Sets the off course state.
  *

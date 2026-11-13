@@ -9,6 +9,7 @@ from spl_core.test_utils.artifacts_archiver import ArtifactsArchiver
 class Test_Sleep:
     variant: str = "Sleep"
     components: list[str] = [
+        "components/auto_off",
         "components/brightness_controller",
         "components/light_controller",
         "components/main_control_knob",
