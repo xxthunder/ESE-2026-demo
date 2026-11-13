@@ -1,0 +1,15 @@
+{
+    "buckets": [
+        {
+            "Name": "sple",
+            "Source": "https://github.com/avengineers/spl-bucket"
+        }
+    ],
+    "apps": [
+        {
+            "Source": "sple",
+            "Name": "mingw-winlibs-llvm-ucrt",
+            "Version": "14.2.0-19.1.1-12.0.0-r2"
+        }
+    ]
+}

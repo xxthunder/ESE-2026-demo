@@ -1,0 +1,55 @@
+{
+    "name": "SPLed Development",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile",
+        "options": [
+            "--network=host"
+        ],
+        "args": {
+            "UBUNTU_ARCHIVE_MIRROR": "https://ftp.uni-stuttgart.de/ubuntu"
+        }
+    },
+    "runArgs": [
+        "--network=host"
+    ],
+    "initializeCommand": "mkdir -p .devcontainer/certs && cp /usr/local/share/ca-certificates/*.crt .devcontainer/certs/ 2>/dev/null; true",
+    "containerEnv": {
+        "SPLED_RELAX_X509_STRICT": "${localEnv:SPLED_RELAX_X509_STRICT}"
+    },
+    "userEnvProbe": "loginInteractiveShell",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    "onCreateCommand": "./build.sh --install",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.flake8",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "twxs.cmake",
+                "ms-vscode.test-adapter-converter",
+                "matepek.vscode-catch2-test-adapter",
+                "ms-python.pytest",
+                "ms-vscode.powershell",
+                "useblocks.ubcode",
+                "ms-vscode.cpptools-extension-pack"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.defaultInterpreterPath": ".venv/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": false,
+                "python.linting.flake8Enabled": true,
+                "cmake.configureOnOpen": false,
+                "cmake.buildDirectory": "${workspaceFolder}/build/${variant}/${buildKit}",
+                "files.associations": {
+                    "*.cmake": "cmake",
+                    "CMakeLists.txt": "cmake"
+                }
+            }
+        }
+    }
+}
