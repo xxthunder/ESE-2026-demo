@@ -9,6 +9,8 @@
 ## Table of Contents
 
 ### Open
+- [DEMO-004 — Tastatur unter Linux einmal pro Takt lesen](demo-004.md)
+- [DEMO-003 — Architekturbilder zeigen Auto Off](demo-003.md)
 
 ### In Progress
 - [DEMO-002 — Auto Off](demo-002.md)
