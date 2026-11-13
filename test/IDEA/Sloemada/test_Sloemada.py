@@ -9,6 +9,7 @@ from spl_core.test_utils.artifacts_archiver import ArtifactsArchiver
 class Test_IDEA__Sloemada:
     variant: str = "IDEA/Sloemada"
     components: list[str] = [
+        "components/auto_off",
         "components/brightness_controller",
         "components/light_controller",
         "components/main_control_knob",
@@ -113,3 +114,26 @@ class Test_IDEA__Sloemada:
         expected_artifacts = spl_build.get_components_artifacts(self.components) + artifacts_to_be_archived
         for artifact in expected_artifacts:
             assert artifact.exists(), f"Artifact {artifact} does not exist"
+
+    @pytest.mark.gate_develop_pr
+    @pytest.mark.gate_develop_push
+    @pytest.mark.gate_develop_nightly
+    @pytest.mark.gate_release_pr
+    @pytest.mark.gate_release
+    def test_auto_off_selected(self):
+        # Arrange
+        spl_build: SplBuild = SplBuild(
+            variant=self.variant,
+            build_kit="prod",
+            build_type="Debug",
+            target="all",
+        )
+
+        # Act
+        result = spl_build.execute()
+
+        # Assert
+        assert result == 0, "Building failed"
+        autoconf = (spl_build.build_dir / "kconfig" / "autoconf.h").read_text()
+        assert "#define CONFIG_AUTO_OFF 1" in autoconf.splitlines(), "Auto Off is not selected"
+        assert "#define CONFIG_AUTO_OFF_TIMEOUT 10" in autoconf.splitlines(), "Auto Off timeout is not 10 seconds"

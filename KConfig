@@ -33,5 +33,6 @@ menu "Features"
 
     source "components/os/KConfig"
     source "components/light_controller/KConfig"
+    source "components/auto_off/KConfig"
 
 endmenu

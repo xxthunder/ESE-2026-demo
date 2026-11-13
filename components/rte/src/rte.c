@@ -38,6 +38,10 @@ static brightness_t rteBrightnessValue = 0;
 static uint32_t brightnessAdjustmentCounter = 0;
 #endif
 
+#ifdef CONFIG_AUTO_OFF
+static bool_t rteAutoOffState = FALSE;
+#endif
+
 // Flight Controller RTE variables
 static bool_t rteOffCourse = FALSE;
 static bool_t rteAbortCommanded = FALSE;
@@ -113,6 +117,18 @@ void RteGetBrightnessAdjustmentCounter(uint32_t *const counter)
     *counter = brightnessAdjustmentCounter;
 }
 #endif // CONFIG_BRIGHTNESS_ADJUSTMENT_PERIOD
+
+#ifdef CONFIG_AUTO_OFF
+void RteSetAutoOffState(bool_t autoOffState)
+{
+    rteAutoOffState = autoOffState;
+}
+
+bool_t RteGetAutoOffState(void)
+{
+    return rteAutoOffState;
+}
+#endif // CONFIG_AUTO_OFF
 
 void RteSetOffCourse(bool_t offCourse)
 {

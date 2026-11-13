@@ -36,4 +36,10 @@ CONFIG_COLOR_GREEN=y
 # CONFIG_COLOR_1_PURPLE is not set
 CONFIG_COLOR_1_OFF=y
 # end of Light Controller
+
+#
+# Auto Off
+#
+# CONFIG_AUTO_OFF is not set
+# end of Auto Off
 # end of Features
