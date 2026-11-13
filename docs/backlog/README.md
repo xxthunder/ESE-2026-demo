@@ -9,9 +9,9 @@
 ## Table of Contents
 
 ### Open
-- [DEMO-002 — Auto Off](demo-002.md)
 
 ### In Progress
+- [DEMO-002 — Auto Off](demo-002.md)
 - [DEMO-001 — Backlog refinement](demo-001.md)
 
 ### Done

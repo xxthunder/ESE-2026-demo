@@ -1,6 +1,6 @@
 # [DEMO-002] Auto Off
 
-**Status**: Open
+**Status**: In Progress
 **Priority**: High
 **Component**: `KConfig`, `components/`, `variants/`
 
