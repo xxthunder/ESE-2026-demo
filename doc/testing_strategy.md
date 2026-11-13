@@ -40,13 +40,16 @@ assignments. The Base/Dev variant has a reduced test set as noted.
 | test_build (Release) | `build_release` | | | | ✅ | ✅ |
 | test_unittests | `unittests` | | | | | |
 | test_reports | `reports` | ✅ | ✅ | ✅ | ✅ | ✅ |
+| test_auto_off_selected / test_auto_off_not_selected | *(none)* | ✅ | ✅ | ✅ | ✅ | ✅ |
 | test_static_analysis | `static_analysis` | | | ✅ | | |
 | test_sca_options_file | `sca_options_file` | | | | | |
 | test_sca_check_pr_changes | *(none)* | ✅ | | | ✅ | |
 | test_analysis_timeout | `sca_timeout` | | | | | |
 
 > **Note:** The Base/Dev variant does not include `test_build`, `test_sca_options_file`,
-> or `test_sca_check_pr_changes`. All other markers apply identically.
+> or `test_sca_check_pr_changes`, nor `test_auto_off_selected` or `test_auto_off_not_selected`.
+> Sleep and IDEA/Sloemada have `test_auto_off_selected`; Disco and Spa have
+> `test_auto_off_not_selected`. All other markers apply identically.
 
 ### Design Rationale
 

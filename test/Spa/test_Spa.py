@@ -119,3 +119,26 @@ class Test_Spa:
         expected_artifacts = spl_build.get_components_artifacts(self.components) + artifacts_to_be_archived
         for artifact in expected_artifacts:
             assert artifact.exists(), f"Artifact {artifact} does not exist"
+
+    @pytest.mark.gate_develop_pr
+    @pytest.mark.gate_develop_push
+    @pytest.mark.gate_develop_nightly
+    @pytest.mark.gate_release_pr
+    @pytest.mark.gate_release
+    def test_auto_off_not_selected(self):
+        # Arrange
+        spl_build: SplBuild = SplBuild(
+            variant=self.variant,
+            build_kit="prod",
+            build_type="Debug",
+            target="all",
+        )
+
+        # Act
+        result = spl_build.execute()
+
+        # Assert
+        assert result == 0, "Building failed"
+        autoconf = (spl_build.build_dir / "kconfig" / "autoconf.h").read_text()
+        assert "CONFIG_AUTO_OFF" not in autoconf, "Auto Off must not be selected"
+        assert not (spl_build.build_dir / "components" / "auto_off").exists(), "auto_off component must not be built"
